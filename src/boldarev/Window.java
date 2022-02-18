@@ -41,7 +41,7 @@ public class Window extends JFrame implements ActionListener {
 
     public void redraw() {
         getContentPane().removeAll();
-        cells.getCells().forEach(this::add);
+        cells.getCells().parallelStream().forEach(this::add);
         JLabel label = new JLabel();
         label.setText(String.valueOf(cells.getCells().size()));
         this.setTitle(String.valueOf(cells.getCells().size()));
