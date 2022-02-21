@@ -29,7 +29,7 @@ public class Cells implements Serializable {
 
     public void processCells() {
         Container contentPane = Window.getInstance().getContentPane();
-        List<Cell> newGenerationCells = new ArrayList<>(1000);
+        List<Cell> newGenerationCells = new ArrayList<>();
         cells.parallelStream().forEach(cell -> {
             int nearCount = getNearCount(cell);
             if (nearCount >= MIN_AMOUNT_FOR_LIFE && nearCount <= MAX_AMOUNT_FOR_LIFE) {
