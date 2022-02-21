@@ -1,11 +1,9 @@
 package boldarev;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static boldarev.Parameters.*;
 
@@ -16,24 +14,20 @@ public class Cells implements Serializable {
     private List<Cell> cells = new ArrayList<>(1000);
 
     public Cells() {
-        cells.addAll(initCells(List.of(
+        cells.addAll(List.of(
                 new Cell(0, 0)
                 , new Cell(-1, 0)
                 , new Cell(0, 1)
                 , new Cell(-1, 2)
                 , new Cell(-2, 0)
-        )));
+        ));
     }
 
     public List<Cell> getCells() {
         return cells;
     }
 
-    public void setCells(List<Cell> cells) {
-        this.cells = cells;
-    }
-
-    public List<Cell> processCells() {
+    public void processCells() {
         Container contentPane = Window.getInstance().getContentPane();
         List<Cell> newGenerationCells = new ArrayList<>(1000);
         cells.parallelStream().forEach(cell -> {
@@ -57,7 +51,6 @@ public class Cells implements Serializable {
             }
         });
         cells = newGenerationCells;
-        return cells;
     }
 
     private int getNearCount(Cell cell) {
@@ -74,15 +67,6 @@ public class Cells implements Serializable {
         return nearCount;
     }
 
-    private List<Cell> initCells(List<Cell> clearCells) {
-        clearCells.parallelStream().forEach(cell -> cell.setNearCells(
-                clearCells.parallelStream()
-                        .filter(cell::isNearCell)
-                        .collect(Collectors.toList()))
-        );
-        return clearCells;
-    }
-
     public void cellAction(int x, int y, Color color) {
         if (COLOR_CELL.equals(color)) {
             removeCell(x, y);
@@ -94,13 +78,11 @@ public class Cells implements Serializable {
     private void addCell(int x, int y) {
         Point cellPoint = coordinateSystem.toCellPoint(x, y);
         cells.add(new Cell(cellPoint));
-        initCells(cells);
     }
 
     private void removeCell(int x, int y) {
         Point cellPoint = coordinateSystem.toCellPoint(x, y);
         cells.remove(new Cell(cellPoint));
-        initCells(cells);
     }
 
     public void scale() {

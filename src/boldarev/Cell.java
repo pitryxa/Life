@@ -14,7 +14,6 @@ public class Cell extends JPanel {
     private final int cellX;
     private final int cellY;
     public final int hashCode;
-    private List<Cell> nearCells = new ArrayList<>();
 
     public Cell(int cellX, int cellY) {
         this.cellX = cellX;
@@ -41,31 +40,11 @@ public class Cell extends JPanel {
         return cellY;
     }
 
-    public boolean addNearCell(Cell nearCell) {
-        return nearCells.add(nearCell);
-    }
-
-    public boolean removeNearCell(Cell nearCell) {
-        return nearCells.remove(nearCell);
-    }
-
-    public List<Cell> getNearCells() {
-        return nearCells;
-    }
-
-    public void setNearCells(List<Cell> nearCells) {
-        this.nearCells = nearCells;
-    }
-
     public boolean isNearCell(Cell otherCell) {
         if (this.equals(otherCell)) {
             return false;
         }
         return (Math.abs(this.cellX - otherCell.cellX) <= 1 && Math.abs(this.cellY - otherCell.cellY) <= 1);
-    }
-
-    public int getNearCellsCount() {
-        return nearCells.size();
     }
 
     @Override
@@ -91,8 +70,6 @@ public class Cell extends JPanel {
         }
         if (cellX != other.cellX)
             return false;
-        if (cellY != other.cellY)
-            return false;
-        return true;
+        return cellY == other.cellY;
     }
 }
