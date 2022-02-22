@@ -21,29 +21,9 @@ public class CoordinateSystem {
         return system;
     }
 
-    public int getCenterX() {
-        return centerX;
-    }
-
-    public int getCenterY() {
-        return centerY;
-    }
-
-    public void setCenterX(int centerX) {
-        this.centerX = centerX;
-    }
-
-    public void setCenterY(int centerY) {
-        this.centerY = centerY;
-    }
-
     public void setCenter(int x, int y) {
-        setCenterX(x);
-        setCenterY(y);
-    }
-
-    public Point getCenter() {
-        return new Point(centerX, centerY);
+        this.centerX = x;
+        this.centerY = y;
     }
 
     public void moveCenter(int deltaX, int deltaY) {
@@ -51,14 +31,14 @@ public class CoordinateSystem {
         centerY -= 0.1 * deltaY;
     }
 
-    public int toCellX(int absoluteX) {
-        double doubleX = (absoluteX + (double) FULL_SIZE_CELL / 2 - getCenterX()) / (double) FULL_SIZE_CELL;
-        return doubleX < 0 ? (int) doubleX - 1 : (int) doubleX;
+    private int toCellX(int absoluteX) {
+        int intX = (absoluteX + FULL_SIZE_CELL / 2 - centerX) / FULL_SIZE_CELL;
+        return intX < 0 ? intX - 1 : intX;
     }
 
-    public int toCellY(int absoluteY) {
-        double doubleY = (getCenterY() - absoluteY - (double) FULL_SIZE_CELL / 2) / (double) FULL_SIZE_CELL;
-        return doubleY < 0 ? (int) doubleY : (int) doubleY + 1;
+    private int toCellY(int absoluteY) {
+        int intY = (centerY - absoluteY - FULL_SIZE_CELL / 2) / FULL_SIZE_CELL;
+        return intY < 0 ? intY : intY + 1;
     }
 
     public Point toCellPoint(int absoluteX, int absoluteY) {
