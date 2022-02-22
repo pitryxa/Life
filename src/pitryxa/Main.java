@@ -1,4 +1,4 @@
-package boldarev;
+package pitryxa;
 
 public class Main {
 

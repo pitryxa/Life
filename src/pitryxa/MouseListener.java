@@ -1,13 +1,13 @@
-package boldarev;
+package pitryxa;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
-import static boldarev.Parameters.FULL_SIZE_CELL;
-import static boldarev.Parameters.MIN_SIZE_CELL;
-import static boldarev.Util.getColor;
+import static pitryxa.Parameters.FULL_SIZE_CELL;
+import static pitryxa.Parameters.MIN_SIZE_CELL;
+import static pitryxa.Util.getColor;
 
 public class MouseListener extends MouseAdapter {
 

@@ -1,11 +1,11 @@
-package boldarev;
+package pitryxa;
 
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static boldarev.Parameters.*;
+import static pitryxa.Parameters.*;
 
 public class CellService implements Serializable {
 

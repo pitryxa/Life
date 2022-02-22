@@ -1,4 +1,4 @@
-package boldarev;
+package pitryxa;
 
 import java.awt.*;
 

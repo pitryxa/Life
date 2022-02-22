@@ -1,9 +1,9 @@
-package boldarev;
+package pitryxa;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static boldarev.Parameters.*;
+import static pitryxa.Parameters.*;
 
 public class Cell extends JPanel {
 
