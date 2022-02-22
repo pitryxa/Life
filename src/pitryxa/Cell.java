@@ -69,4 +69,6 @@ public class Cell extends JPanel {
             return false;
         return cellY == other.cellY;
     }
+
+
 }

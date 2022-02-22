@@ -1,6 +1,5 @@
 package pitryxa.service;
 
-import pitryxa.Cell;
 import pitryxa.model.CellVersion2;
 import pitryxa.model.CoordinateSystem;
 import pitryxa.repository.CellRepository;
@@ -11,8 +10,10 @@ public class CellService {
 
     private final CoordinateSystem coordinateSystem = new CoordinateSystem();
     private final CellRepository cellRepository = new CellRepository();
+    private final AppService appService;
 
-    public CellService() {
+    public CellService(AppService appService) {
+        this.appService = appService;
         startInitCells();
     }
 
@@ -24,5 +25,9 @@ public class CellService {
                 , new CellVersion2(-1, 2)
                 , new CellVersion2(-2, 0)
         ).parallelStream().forEach(cellRepository::addCell);
+    }
+
+    public void calculateNextGeneration() {
+
     }
 }

@@ -16,6 +16,8 @@ public class Parameters {
     public static final int MIN_AMOUNT_FOR_LIFE = 2;
     public static final int MAX_AMOUNT_FOR_LIFE = 4;
 
+    public static final int TIMER_DELAY_MILLISECONDS = 200;
+
 
     private Parameters() { throw new IllegalStateException("Utility class"); }
 
