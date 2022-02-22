@@ -1,6 +1,6 @@
 package pitryxa;
 
-public class Main {
+public class LifeApplication {
 
     public static void main(String[] args) {
         Window.getInstance();
