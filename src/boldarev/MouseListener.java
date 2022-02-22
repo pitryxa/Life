@@ -29,7 +29,7 @@ public class MouseListener extends MouseAdapter {
             case LEFT_BUTTON:
                 try {
                     Color color = getColor(e.getXOnScreen(), e.getYOnScreen());
-                    window.cells.cellAction(e.getX(), e.getY(), color);
+                    window.cellService.cellAction(e.getX(), e.getY(), color);
                     window.redraw();
                 } catch (AWTException ex) {
                     ex.printStackTrace();
@@ -51,7 +51,7 @@ public class MouseListener extends MouseAdapter {
     public void mouseWheelMoved(MouseWheelEvent e) {
         int scale = e.getWheelRotation();
         FULL_SIZE_CELL = Math.max(MIN_SIZE_CELL + 2, FULL_SIZE_CELL - 2 * scale);
-        window.cells.scale();
+        window.cellService.scale();
         window.redraw();
     }
 
@@ -60,7 +60,7 @@ public class MouseListener extends MouseAdapter {
         int deltaX = mousePressPoint.x - e.getX();
         int deltaY = mousePressPoint.y - e.getY();
         coordinateSystem.moveCenter(deltaX, deltaY);
-        window.cells.scale();
+        window.cellService.scale();
         window.redraw();
     }
 

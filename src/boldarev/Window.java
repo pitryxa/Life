@@ -14,7 +14,7 @@ public class Window extends JFrame implements ActionListener {
 
     MouseAdapter mouseListener = new MouseListener(this);
     public final Timer timer = new Timer(200,this);
-    public final Cells cells = new Cells();
+    public final CellService cellService = new CellService();
 
     private Window() {
         initFrame();
@@ -34,14 +34,14 @@ public class Window extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        cells.processCells();
+        cellService.processCells();
         redraw();
     }
 
     public void redraw() {
         getContentPane().removeAll();
-        cells.getCells().parallelStream().forEach(this::add);
-        this.setTitle(String.valueOf(cells.getCells().size()));
+        cellService.getCells().parallelStream().forEach(this::add);
+        this.setTitle(String.valueOf(cellService.getCells().size()));
         getContentPane().repaint();
     }
 

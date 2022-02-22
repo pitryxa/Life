@@ -7,13 +7,13 @@ import java.util.List;
 
 import static boldarev.Parameters.*;
 
-public class Cells implements Serializable {
+public class CellService implements Serializable {
 
     private static final CoordinateSystem coordinateSystem = CoordinateSystem.getInstance();
 
     private List<Cell> cells = new ArrayList<>(1000);
 
-    public Cells() {
+    public CellService() {
         cells.addAll(List.of(
                 new Cell(0, 0)
                 , new Cell(-1, 0)

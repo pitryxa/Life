@@ -2,8 +2,6 @@ package boldarev;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static boldarev.Parameters.*;
 
@@ -13,12 +11,11 @@ public class Cell extends JPanel {
 
     private final int cellX;
     private final int cellY;
-    public final int hashCode;
+    public Integer hashCode;
 
     public Cell(int cellX, int cellY) {
         this.cellX = cellX;
         this.cellY = cellY;
-        hashCode = hashCode();
         setBackground(COLOR_CELL);
         scale();
     }
@@ -40,11 +37,11 @@ public class Cell extends JPanel {
         return cellY;
     }
 
-    public boolean isNearCell(Cell otherCell) {
-        if (this.equals(otherCell)) {
-            return false;
+    public int getHashCode() {
+        if (hashCode == null) {
+            hashCode = hashCode();
         }
-        return (Math.abs(this.cellX - otherCell.cellX) <= 1 && Math.abs(this.cellY - otherCell.cellY) <= 1);
+        return hashCode;
     }
 
     @Override
@@ -65,7 +62,7 @@ public class Cell extends JPanel {
         if (getClass() != obj.getClass())
             return false;
         Cell other = (Cell) obj;
-        if (this.hashCode != other.hashCode) {
+        if (this.getHashCode() != other.getHashCode()) {
             return false;
         }
         if (cellX != other.cellX)
