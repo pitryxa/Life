@@ -10,10 +10,8 @@ public class CellService {
 
     private final CoordinateSystem coordinateSystem = new CoordinateSystem();
     private final CellRepository cellRepository = new CellRepository();
-    private final AppService appService;
 
-    public CellService(AppService appService) {
-        this.appService = appService;
+    public CellService() {
         startInitCells();
     }
 

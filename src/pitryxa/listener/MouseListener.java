@@ -1,10 +1,7 @@
 package pitryxa.listener;
 
-import pitryxa.service.AppService;
-import pitryxa.window.Window;
+import pitryxa.service.MainService;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,20 +10,23 @@ public class MouseListener extends MouseAdapter {
     private static final int LEFT_BUTTON = 1;
     private static final int RIGHT_BUTTON = 3;
 
-    private Point mousePressPoint;
-    private Timer timer;
-    private Window window;
-    private AppService appService;
+    private final MainService mainService;
 
-    public MouseListener(AppService appService) {
-        this.appService = appService;
-        this.timer = appService.getTimer();
-        this.window = appService.getWindow();
+    public MouseListener(MainService mainService) {
+        this.mainService = mainService;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        window.redraw2();
-        window.paint(window.getGraphics());
+        switch (e.getButton()) {
+            case LEFT_BUTTON:
+                mainService.pressLeftButton();
+                break;
+            case RIGHT_BUTTON:
+                mainService.pressRightButton();
+                break;
+            default:
+                break;
+        }
     }
 }

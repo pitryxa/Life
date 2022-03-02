@@ -1,23 +1,24 @@
 package pitryxa.listener;
 
-import pitryxa.service.AppService;
-import pitryxa.window.Window;
+import pitryxa.service.MainService;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static pitryxa.Parameters.TIMER_DELAY_MILLISECONDS;
+
 public class TimerListener implements ActionListener {
 
-    private Window window;
-    private AppService appService;
+    private final MainService mainService;
 
-    public TimerListener(AppService appService) {
-        this.appService = appService;
-        this.window = appService.getWindow();
+    public TimerListener(MainService mainService) {
+        this.mainService = mainService;
+        new Timer(TIMER_DELAY_MILLISECONDS, this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        mainService.timerAction();
     }
 }
