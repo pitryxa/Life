@@ -1,8 +1,12 @@
 package pitryxa.graphics;
 
+import pitryxa.model.cell.AbsoluteCell;
+import pitryxa.model.cell.CellVersion2;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
+import java.util.Set;
 
 import static pitryxa.Parameters.*;
 
@@ -11,7 +15,7 @@ public class Window extends JFrame {
     private static final String TITLE = "Life";
     private final Container container = this.getContentPane();
 
-    private final JPanel mainPanel = new MainPanel();
+    private final MainPanel mainPanel = new MainPanel();
 
     public Window() {
         startInit();
@@ -51,4 +55,8 @@ public class Window extends JFrame {
         mainPanel.setBackground(BACKGROUND_COLOR_FIELD);
     }
 
+    public void draw(Set<AbsoluteCell> cells) {
+        mainPanel.setCells(cells);
+        mainPanel.repaint();
+    }
 }

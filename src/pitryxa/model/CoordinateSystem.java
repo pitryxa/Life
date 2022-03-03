@@ -4,18 +4,14 @@ import static pitryxa.Parameters.*;
 
 public class CoordinateSystem {
 
-    private int centerX;
-    private int centerY;
+    private static int centerX = WIDTH_FIELD * FULL_SIZE_CELL / 2;
+    private static int centerY = HEIGHT_FIELD * FULL_SIZE_CELL / 2;
 
-    public CoordinateSystem() {
-        this.centerX = WIDTH_FIELD * FULL_SIZE_CELL / 2;
-        this.centerY = HEIGHT_FIELD * FULL_SIZE_CELL / 2;
+    public static int getCenterX() {
+        return centerX;
     }
 
-    public void setCenter(int x, int y) {
-        this.centerX = x;
-        this.centerY = y;
+    public static int getCenterY() {
+        return centerY;
     }
-
-
 }

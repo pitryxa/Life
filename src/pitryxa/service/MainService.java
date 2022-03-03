@@ -12,6 +12,7 @@ public class MainService {
     public MainService() {
         addMouseListener();
         addTimerListener();
+        window.draw(cellService.getAbsoluteCells());
     }
 
     private void addTimerListener() {

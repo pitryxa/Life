@@ -1,6 +1,6 @@
 package pitryxa.repository;
 
-import pitryxa.model.CellVersion2;
+import pitryxa.model.cell.CellVersion2;
 
 import java.util.HashSet;
 import java.util.Set;
