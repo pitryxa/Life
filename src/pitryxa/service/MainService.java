@@ -4,10 +4,15 @@ import pitryxa.listener.MouseListener;
 import pitryxa.listener.TimerListener;
 import pitryxa.graphics.Window;
 
+import javax.swing.*;
+
+import static pitryxa.Parameters.TIMER_DELAY_MILLISECONDS;
+
 public class MainService {
 
     private final Window window = new Window();
     private final CellService cellService = new CellService();
+    private Timer timer;
 
     public MainService() {
         addMouseListener();
@@ -16,7 +21,9 @@ public class MainService {
     }
 
     private void addTimerListener() {
-        new TimerListener(this);
+        TimerListener timerListener = new TimerListener(this);
+        timer = new Timer(TIMER_DELAY_MILLISECONDS, timerListener);
+        timer.start();
     }
 
     private void addMouseListener() {
@@ -33,6 +40,7 @@ public class MainService {
     }
 
     public void timerAction() {
-
+        cellService.calculateNextGeneration();
+        window.draw(cellService.getAbsoluteCells());
     }
 }

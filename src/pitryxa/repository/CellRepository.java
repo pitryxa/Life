@@ -7,17 +7,18 @@ import java.util.Set;
 
 public class CellRepository {
 
-    private final Set<CellVersion2> cells = new HashSet<>();
+    private Set<CellVersion2> cells = new HashSet<>();
 
     public Set<CellVersion2> getCells() {
         return cells;
+    }
+
+    public void setCells(Set<CellVersion2> cells) {
+        this.cells = cells;
     }
 
     public void addCell(CellVersion2 cell) {
         cells.add(cell);
     }
 
-    public void removeCell(CellVersion2 cell) {
-        cells.remove(cell);
-    }
 }
