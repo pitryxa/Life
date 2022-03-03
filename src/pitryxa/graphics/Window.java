@@ -56,6 +56,7 @@ public class Window extends JFrame {
     }
 
     public void draw(Set<AbsoluteCell> cells) {
+        setTitle(String.valueOf(cells.size()));
         mainPanel.setCells(cells);
         mainPanel.repaint();
     }

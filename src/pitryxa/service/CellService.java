@@ -51,8 +51,7 @@ public class CellService {
 
         cells.parallelStream().forEach(c -> {
             AtomicInteger nearCellsCount = new AtomicInteger();
-            nearCellsDelta.parallelStream()
-                    .forEach(d -> {
+            nearCellsDelta.parallelStream().forEach(d -> {
                         CellVersion2 potentialCell = new CellVersion2(c.getX() + d.x, c.getY() + d.y);
                         if (isCellExist(potentialCell, cells)) {
                             nearCellsCount.getAndIncrement();
