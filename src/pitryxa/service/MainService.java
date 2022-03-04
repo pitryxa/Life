@@ -3,11 +3,18 @@ package pitryxa.service;
 import pitryxa.listener.MouseListener;
 import pitryxa.listener.TimerListener;
 import pitryxa.graphics.Window;
+import pitryxa.model.cell.AbsoluteCell;
+import pitryxa.model.cell.CellVersion2;
+import pitryxa.model.cell.mapper.CellMapper;
 
 import javax.swing.*;
 
+import java.awt.*;
+
 import static pitryxa.Parameters.*;
 import static pitryxa.Parameters.FULL_SIZE_CELL;
+import static pitryxa.model.cell.mapper.CellMapper.toAbsoluteCell;
+import static pitryxa.model.cell.mapper.CellMapper.toCell;
 
 public class MainService {
 
@@ -24,7 +31,6 @@ public class MainService {
     private void addTimerListener() {
         TimerListener timerListener = new TimerListener(this);
         timer = new Timer(TIMER_DELAY_MILLISECONDS, timerListener);
-        timer.start();
     }
 
     private void addMouseListener() {
@@ -32,21 +38,35 @@ public class MainService {
         window.addMouseListener(mouseListener);
     }
 
-    public void pressLeftButton() {
-
+    public void pressLeftButton(Point absolutePoint) {
+        CellVersion2 cell = toCell(absolutePoint);
+        if (cellService.isCellExist(cell)) {
+            cellService.removeCell(cell);
+        } else {
+            cellService.addCell(cell);
+        }
+        redraw();
     }
 
     public void pressRightButton() {
-
+        if (timer.isRunning()) {
+            timer.stop();
+            return;
+        }
+        timer.start();
     }
 
     public void timerAction() {
         cellService.calculateNextGeneration();
-        window.draw(cellService.getAbsoluteCells());
+        redraw();
     }
 
     public void scale(int scale) {
-        FULL_SIZE_CELL = Math.max(MIN_SIZE_CELL + 2, FULL_SIZE_CELL - 2 * scale);
+        cellService.scaleCells(scale);
+        redraw();
+    }
+
+    private void redraw() {
         window.draw(cellService.getAbsoluteCells());
     }
 }

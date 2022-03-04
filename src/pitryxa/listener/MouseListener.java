@@ -24,7 +24,7 @@ public class MouseListener extends MouseAdapter {
     public void mouseClicked(MouseEvent e) {
         switch (e.getButton()) {
             case LEFT_BUTTON:
-                mainService.pressLeftButton();
+                mainService.pressLeftButton(e.getPoint());
                 break;
             case RIGHT_BUTTON:
                 mainService.pressRightButton();
