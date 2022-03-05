@@ -7,6 +7,10 @@ public class CoordinateSystem {
     private static int centerX = WIDTH_FIELD * getCellFullSize() / 2;
     private static int centerY = HEIGHT_FIELD * getCellFullSize() / 2;
 
+    private CoordinateSystem() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static int getCenterX() {
         return centerX;
     }

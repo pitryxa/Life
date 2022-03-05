@@ -1,6 +1,5 @@
 package pitryxa.model.cell;
 
-
 import static pitryxa.parameters.Parameters.getCellFullSize;
 
 public class AbsoluteCell extends AbstractCell {
@@ -17,18 +16,11 @@ public class AbsoluteCell extends AbstractCell {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        AbsoluteCell other = (AbsoluteCell) obj;
-        if (this.getHashCode() != other.getHashCode()) {
-            return false;
-        }
-        if (this.x != other.x)
-            return false;
-        return this.y == other.y;
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
 }

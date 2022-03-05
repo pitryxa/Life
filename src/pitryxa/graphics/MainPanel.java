@@ -13,7 +13,7 @@ import static pitryxa.model.CoordinateSystem.getCenterY;
 
 public class MainPanel extends JPanel {
 
-    private Set<AbsoluteCell> cells = new HashSet<>();
+    private transient Set<AbsoluteCell> cells = new HashSet<>();
 
     public void setCells(Set<AbsoluteCell> cells) {
         this.cells = cells;

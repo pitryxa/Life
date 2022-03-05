@@ -6,7 +6,7 @@ public abstract class AbstractCell {
     protected final int y;
     protected Integer hashCode;
 
-    public AbstractCell(int x, int y) {
+    protected AbstractCell(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -33,5 +33,22 @@ public abstract class AbstractCell {
         result = prime * result + x;
         result = prime * result + y;
         return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        AbstractCell other = (AbstractCell) obj;
+        if (this.getHashCode() != other.getHashCode()) {
+            return false;
+        }
+        if (this.x != other.x)
+            return false;
+        return this.y == other.y;
     }
 }

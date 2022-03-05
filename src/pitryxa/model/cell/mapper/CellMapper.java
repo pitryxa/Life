@@ -12,6 +12,10 @@ import static pitryxa.model.CoordinateSystem.*;
 
 public class CellMapper {
 
+    private CellMapper() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static AbsoluteCell toAbsoluteCell(Cell cell) {
         return new AbsoluteCell(
                 toAbsoluteX(cell.getX()),
