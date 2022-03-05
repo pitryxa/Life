@@ -55,9 +55,9 @@ public class CellService {
         Set<CellVersion2> newGeneration = new HashSet<>();
         Set<CellVersion2> cells = cellRepository.getCells();
 
-        cells.parallelStream().forEach(c -> {
+        cells.forEach(c -> {
             AtomicInteger nearCellsCount = new AtomicInteger();
-            nearCellsDelta.parallelStream().forEach(d -> {
+            nearCellsDelta.forEach(d -> {
                         CellVersion2 potentialCell = new CellVersion2(c.getX() + d.x, c.getY() + d.y);
                         if (isCellExist(potentialCell)) {
                             nearCellsCount.getAndIncrement();
@@ -80,7 +80,7 @@ public class CellService {
     }
 
     private boolean isTimeToBirth(CellVersion2 potentialCell) {
-        long nearCellsCount = nearCellsDelta.parallelStream()
+        long nearCellsCount = nearCellsDelta.stream()
                 .filter(d -> {
                     CellVersion2 nearCell = generateNearCell(potentialCell, d);
                     return isCellExist(nearCell);

@@ -3,17 +3,13 @@ package pitryxa.service;
 import pitryxa.listener.MouseListener;
 import pitryxa.listener.TimerListener;
 import pitryxa.graphics.Window;
-import pitryxa.model.cell.AbsoluteCell;
 import pitryxa.model.cell.CellVersion2;
-import pitryxa.model.cell.mapper.CellMapper;
 
 import javax.swing.*;
 
 import java.awt.*;
 
 import static pitryxa.Parameters.*;
-import static pitryxa.Parameters.FULL_SIZE_CELL;
-import static pitryxa.model.cell.mapper.CellMapper.toAbsoluteCell;
 import static pitryxa.model.cell.mapper.CellMapper.toCell;
 
 public class MainService {
