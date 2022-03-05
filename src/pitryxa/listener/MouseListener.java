@@ -2,12 +2,10 @@ package pitryxa.listener;
 
 import pitryxa.service.MainService;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-
-import static pitryxa.Parameters.FULL_SIZE_CELL;
-import static pitryxa.Parameters.MIN_SIZE_CELL;
 
 public class MouseListener extends MouseAdapter {
 
@@ -15,6 +13,7 @@ public class MouseListener extends MouseAdapter {
     private static final int RIGHT_BUTTON = 3;
 
     private final MainService mainService;
+    private Point mousePressPoint;
 
     public MouseListener(MainService mainService) {
         this.mainService = mainService;
@@ -38,11 +37,17 @@ public class MouseListener extends MouseAdapter {
     public void mouseWheelMoved(MouseWheelEvent e) {
         int scale = e.getWheelRotation();
         mainService.scale(scale);
+    }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        int deltaX = mousePressPoint.x - e.getX();
+        int deltaY = mousePressPoint.y - e.getY();
+        mainService.move(deltaX, deltaY);
+    }
 
-
-//        FULL_SIZE_CELL = Math.max(MIN_SIZE_CELL + 2, FULL_SIZE_CELL - 2 * scale);
-//        window.cellService.scale();
-//        window.redraw();
+    @Override
+    public void mousePressed(MouseEvent e) {
+        mousePressPoint = e.getPoint();
     }
 }

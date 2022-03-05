@@ -1,10 +1,11 @@
 package pitryxa.model.cell;
 
-import static pitryxa.Parameters.FULL_SIZE_CELL;
+
+import static pitryxa.parameters.Parameters.getCellFullSize;
 
 public class AbsoluteCell extends AbstractCell {
 
-    private final int width = FULL_SIZE_CELL - 1;
+    private final int width = getCellFullSize() - 1;
 
     public AbsoluteCell(int x, int y) {
         super(x, y);

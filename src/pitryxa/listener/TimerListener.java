@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static pitryxa.Parameters.TIMER_DELAY_MILLISECONDS;
+import static pitryxa.parameters.Parameters.TIMER_DELAY_MILLISECONDS;
 
 public class TimerListener implements ActionListener {
 

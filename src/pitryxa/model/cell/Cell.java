@@ -1,8 +1,8 @@
 package pitryxa.model.cell;
 
-public class CellVersion2 extends AbstractCell {
+public class Cell extends AbstractCell {
 
-    public CellVersion2(int x, int y) {
+    public Cell(int x, int y) {
         super(x, y);
     }
 
@@ -14,7 +14,7 @@ public class CellVersion2 extends AbstractCell {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        CellVersion2 other = (CellVersion2) obj;
+        Cell other = (Cell) obj;
         if (this.getHashCode() != other.getHashCode()) {
             return false;
         }

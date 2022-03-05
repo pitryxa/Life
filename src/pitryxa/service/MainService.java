@@ -3,13 +3,13 @@ package pitryxa.service;
 import pitryxa.listener.MouseListener;
 import pitryxa.listener.TimerListener;
 import pitryxa.graphics.Window;
-import pitryxa.model.cell.CellVersion2;
+import pitryxa.model.cell.Cell;
 
 import javax.swing.*;
 
 import java.awt.*;
 
-import static pitryxa.Parameters.*;
+import static pitryxa.parameters.Parameters.*;
 import static pitryxa.model.cell.mapper.CellMapper.toCell;
 
 public class MainService {
@@ -35,7 +35,7 @@ public class MainService {
     }
 
     public void pressLeftButton(Point absolutePoint) {
-        CellVersion2 cell = toCell(absolutePoint);
+        Cell cell = toCell(absolutePoint);
         if (cellService.isCellExist(cell)) {
             cellService.removeCell(cell);
         } else {
@@ -64,5 +64,10 @@ public class MainService {
 
     private void redraw() {
         window.draw(cellService.getAbsoluteCells());
+    }
+
+    public void move(int deltaX, int deltaY) {
+        cellService.move(deltaX, deltaY);
+        redraw();
     }
 }

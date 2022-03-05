@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import static pitryxa.Parameters.COLOR_CELL;
+import static pitryxa.parameters.Parameters.COLOR_CELL;
 import static pitryxa.model.CoordinateSystem.getCenterX;
 import static pitryxa.model.CoordinateSystem.getCenterY;
 

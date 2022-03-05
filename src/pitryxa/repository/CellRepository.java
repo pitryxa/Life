@@ -1,21 +1,21 @@
 package pitryxa.repository;
 
 import pitryxa.model.cell.AbsoluteCell;
-import pitryxa.model.cell.CellVersion2;
+import pitryxa.model.cell.Cell;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class CellRepository {
 
-    private Set<CellVersion2> cells = new HashSet<>();
+    private Set<Cell> cells = new HashSet<>();
     private Set<AbsoluteCell> absoluteCells = new HashSet<>();
 
-    public Set<CellVersion2> getCells() {
+    public Set<Cell> getCells() {
         return cells;
     }
 
-    public void setCells(Set<CellVersion2> cells) {
+    public void setCells(Set<Cell> cells) {
         this.cells = cells;
     }
 
@@ -27,7 +27,7 @@ public class CellRepository {
         return absoluteCells;
     }
 
-    public synchronized void addCell(CellVersion2 cell) {
+    public synchronized void addCell(Cell cell) {
         cells.add(cell);
     }
 
@@ -35,7 +35,7 @@ public class CellRepository {
         absoluteCells.add(cell);
     }
 
-    public void removeCell(CellVersion2 cell) {
+    public void removeCell(Cell cell) {
         cells.remove(cell);
     }
 

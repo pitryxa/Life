@@ -1,14 +1,13 @@
 package pitryxa.graphics;
 
 import pitryxa.model.cell.AbsoluteCell;
-import pitryxa.model.cell.CellVersion2;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.util.Set;
 
-import static pitryxa.Parameters.*;
+import static pitryxa.parameters.Parameters.*;
 
 public class Window extends JFrame {
 
@@ -50,7 +49,7 @@ public class Window extends JFrame {
     }
 
     private void initMainPanel() {
-        Dimension dimension = new Dimension(WIDTH_FIELD * FULL_SIZE_CELL, HEIGHT_FIELD * FULL_SIZE_CELL);
+        Dimension dimension = new Dimension(WIDTH_FIELD * getCellFullSize(), HEIGHT_FIELD * getCellFullSize());
         mainPanel.setPreferredSize(dimension);
         mainPanel.setBackground(BACKGROUND_COLOR_FIELD);
     }
